@@ -21,7 +21,9 @@ import json
 
 pp = pprint.PrettyPrinter(indent=1, depth=10000)
 
-#begin utilities
+# begin utilities
+
+
 def is_ident(tok):
     '''Determines if the token is of type IDENT.
     tok - a token
@@ -29,13 +31,15 @@ def is_ident(tok):
     '''
     return -1 < tok.find("IDENT")
 
+
 def is_number(tok):
     '''Determines if the token is of type NUMBER.
     tok - a token
     returns True if NUMBER is in the token or False if not.
     '''
     return -1 < tok.find("NUMBER")
-#end utilities
+# end utilities
+
 
 def Program(token_index):
     '''
@@ -57,6 +61,7 @@ def Program(token_index):
     if success:
         return [True, returned_index, ["Program1", returned_subtree]]
     return [False, token_index, []]
+
 
 def Statement(token_index):
     '''<Statement> ->
@@ -99,13 +104,14 @@ def FunctionDeclaration(token_index):
                     if "LBRACE" == tokens[returned_index]:
                         subtree.append(tokens[returned_index])
                         (success, returned_index, returned_subtree) = FunctionBody(
-                        returned_index + 1)
+                            returned_index + 1)
                         if success:
                             subtree.append(returned_subtree)
                             if "RBRACE" == tokens[returned_index]:
                                 subtree.append(tokens[returned_index])
                                 return [True, returned_index + 1, subtree]
     return [False, token_index, []]
+
 
 def FunctionParams(token_index):
     '''
@@ -125,6 +131,7 @@ def FunctionParams(token_index):
         subtree = ["FunctionParams1", tokens[token_index]]
         return [True, token_index + 1, subtree]
     return [False, token_index, []]
+
 
 def FunctionBody(token_index):
     '''<FunctionBody> ->
@@ -146,6 +153,7 @@ def FunctionBody(token_index):
         return [True, returned_index, ["FunctionBody1", returned_subtree]]
     return [False, token_index, []]
 
+
 def Return(token_index):
     '''<Return> ->
         RETURN <ParameterList>
@@ -158,6 +166,7 @@ def Return(token_index):
             subtree.append(returned_subtree)
             return [True, returned_index, subtree]
     return [False, token_index, []]
+
 
 def Assignment(token_index):
     '''<Assignment> ->
@@ -173,6 +182,7 @@ def Assignment(token_index):
     if success:
         return [True, returned_index, ["Assignment1", returned_subtree]]
     return [False, token_index, []]
+
 
 def SingleAssignment(token_index):
     '''<SingleAssignment> ->
@@ -192,6 +202,7 @@ def SingleAssignment(token_index):
                     subtree.append(returned_subtree)
                     return [True, returned_index, subtree]
     return [False, token_index, []]
+
 
 def MultipleAssignment(token_index):
     '''<MultipleAssignment> ->
@@ -226,6 +237,7 @@ def Print(token_index):
             return [True, returned_index, subtree]
     return [False, token_index, []]
 
+
 def NameList(token_index):
     '''<NameList> ->
         <Name> COMMA <NameList>
@@ -247,6 +259,7 @@ def NameList(token_index):
     if success:
         return [True, returned_index, ["NameList1", returned_subtree]]
     return [False, token_index, []]
+
 
 def ParameterList(token_index):
     '''<ParameterList> ->
@@ -364,7 +377,7 @@ def Factor(token_index):
         | <Value> EXP <Factor>
         | <Value>
     '''
-    #<SubExpression> EXP <Factor>
+    # <SubExpression> EXP <Factor>
     (success, returned_index, returned_subtree) = SubExpression(token_index)
     if success:
         subtree = ["Factor0", returned_subtree]
@@ -374,16 +387,16 @@ def Factor(token_index):
             if success:
                 subtree.append(returned_subtree)
                 return [True, returned_index, subtree]
-    #<SubExpression>
+    # <SubExpression>
     (success, returned_index, returned_subtree) = SubExpression(token_index)
     if success:
         subtree = ["Factor1", returned_subtree]
         return [True, returned_index, subtree]
-    #<FunctionCall>
+    # <FunctionCall>
     (success, returned_index, returned_subtree) = FunctionCall(token_index)
     if success:
         return [True, returned_index, ["Factor2", returned_subtree]]
-    #<Value> EXP <Factor>
+    # <Value> EXP <Factor>
     (success, returned_index, returned_subtree) = Value(token_index)
     if success:
         subtree = ["Factor3", returned_subtree]
@@ -393,7 +406,7 @@ def Factor(token_index):
             if success:
                 subtree.append(returned_subtree)
                 return [True, returned_index, subtree]
-    #<Value>
+    # <Value>
     (success, returned_index, returned_subtree) = Value(token_index)
     if success:
         return [True, returned_index, ["Factor4", returned_subtree]]
@@ -445,7 +458,7 @@ def FunctionCallParams(token_index):
         <ParameterList> RPAREN
         | RPAREN
     '''
-    #<ParameterList> RPAREN
+    # <ParameterList> RPAREN
     (success, returned_index, returned_subtree) = ParameterList(token_index)
     if success:
         subtree = ["FunctionCallParams0", returned_subtree]
@@ -480,12 +493,12 @@ def Value(token_index):
         <Name>
         | <Number>
     '''
-    #<name>
+    # <name>
     (success, returned_index, returned_subtree) = Name(token_index)
     if success:
         return [True, returned_index, ["Value0", returned_subtree]]
 
-    #<number>
+    # <number>
     (success, returned_index, returned_subtree) = Number(token_index)
     if success:
         return [True, returned_index, ["Value1", returned_subtree]]
@@ -533,8 +546,9 @@ def Number(token_index):
             return [True, token_index + 2, subtree]
     return [False, token_index, subtree]
 
+
 if __name__ == '__main__':
-    #reads input from lexer.py print
+    # reads input from lexer.py print
     token_input = sys.stdin.read()
     '''
     splits the tokens of that result by whitespace, creating an extra empty
@@ -543,9 +557,10 @@ if __name__ == '__main__':
     tokens = token_input.split("\n")
 
     '''
-    should be replaced by a statement that checks whether Program(0)[0] == 'true'
+    should be replaced by a statement that checks whether
+    Program(0)[0] == 'true'
     '''
     token_result = (Program(0))[2]
     serializedPaseTree = json.dumps(token_result)
-    #prints statement for interpreter.py to receive
+    # prints statement for interpreter.py to receive
     print(serializedPaseTree)
