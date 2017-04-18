@@ -1,0 +1,24 @@
+Lexer - 30/30
+  Example 1 CORRECTLY LEXED
+  Example 2 CORRECTLY LEXED
+  Example 3 CORRECTLY LEXED
+  Example 4 CORRECTLY LEXED
+  Example 5 CORRECTLY LEXED
+
+  Parser - 30/30
+
+    Example 1 CORRECTLY PARSED
+    Example 2 CORRECTLY PARSED
+    Example 3 CORRECTLY PARSED
+    Example 4 CORRECTLY PARSED
+    Example 5 CORRECTLY PARSED
+
+Interpreter - 17/20
+
+  Example 1 CORRECTLY INTERPRETED
+  Example 2 CORRECTLY INTERPRETED
+  Example 3 CORRECTLY INTERPRETED
+  Example 4 CORRECTLY INTERPRETED
+  Example 5 was incorrectly interpreted
+
+Style - 20/20
