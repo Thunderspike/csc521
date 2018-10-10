@@ -9,14 +9,14 @@ In Clojure, this project is only composed of hte interpreter, as Clojure has eas
 Below is the formal syntax for the 'Quirk' programming language:
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-Program := Statement Program | Statement
-Statement := FunctionDeclaration | Assignment | Print
-FunctionDeclaration :=  FUNCTION Name LPAREN FunctionParams LBRACE FunctionBody RBRACE
-FunctionParams := NameList RPAREN | RPAREN
-FunctionBody := Program Return | Return
-Return := RETURN ParameterList
-Assignment := SingleAssignment | MultipleAssignment
-SingleAssignment := VAR Name ASSIGN Expression
+Program := Statement Program | Statement                                                          ;
+Statement := FunctionDeclaration | Assignment | Print                                             ;
+FunctionDeclaration :=  FUNCTION Name LPAREN FunctionParams LBRACE FunctionBody RBRACE            ;
+FunctionParams := NameList RPAREN | RPAREN                                                        ;
+FunctionBody := Program Return | Return                                                           ;
+Return := RETURN ParameterList                                                                    ;
+Assignment := SingleAssignment | MultipleAssignment                                               ;
+SingleAssignment := VAR Name ASSIGN Expression                                                    ;
 MultipleAssignment := VAR NameList ASSIGN FunctionCall
 Print:= PRINT Expression
 NameList := Name COMMA NameList | Name
