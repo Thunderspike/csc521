@@ -10,6 +10,7 @@ In Clojure, this project is only composed of hte interpreter, as Clojure has eas
 
 Below is the formal syntax for the 'Quirk' programming language:
 
+--------------------------------------------------------------------------------------------------------------------------------------
 
 Program := Statement Program | Statement                                                          
 Statement := FunctionDeclaration | Assignment | Print                                             
@@ -51,3 +52,5 @@ COMMA := #"\,"
 COLON := #"\:"                                                                                                                  
 NUMBER:= #"((\d+(\.\d*)?)|(\.\d+))"                                                                                           
 IDENT := #"[a-zA-Z]+[a-zA-Z0-9_]*"    
+
+--------------------------------------------------------------------------------------------------------------------------------------
