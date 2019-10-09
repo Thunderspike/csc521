@@ -4,7 +4,7 @@ Compiler for the Quirk computer language, written in Python and partly replicate
 This project was composed as part of the CSC521 course - Design & Organization of Programing Languages - at American University (Spring 2017). 
 
 In Python, this project makes use of three main functions, the lexer, the parser and the interpreter.
-In Clojure, this project is only composed of hte interpreter, as Clojure has easy access to parsing functionality (through its Instaparse dependency)
+In Clojure, this project is only composed of the interpreter, as Clojure has easy access to parsing functionality (through its Instaparse dependency)
 
 
 
